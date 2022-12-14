@@ -51,25 +51,25 @@ public class Alfil {
                         int w=c;
                         int x=d;
                         int y=c;
+                        int z=d;
 
-                        while(c!=7 && d!=7){
-                            c++;
-                            d++;
-                            System.out.print(tablero[c][v]+" ");
-                        }
-                        while(u!=0){
-                            u--;
+                        while(u!=7){
+                            u++;
                             System.out.print(tablero[u][u]+" ");
                         }
-                        while(v!=7 && w!=0){
-                            v++;
-                            w--;
-                            System.out.print(tablero[v][w]+" ");
+                        while(v!=0){
+                            v--;
+                            System.out.print(tablero[v][v]+" ");
                         }
-                        while(x!=0 && y!=7){
-                            y++;
+                        while(w!=7 && x!=0){
+                            w++;
                             x--;
-                            System.out.print(tablero[x][y]+" ");
+                            System.out.print(tablero[w][x]+" ");
+                        }
+                        while(y!=0 && z!=7){
+                            y--;
+                            z++;
+                            System.out.print(tablero[y][z]+" ");
                         }
 
                     }
