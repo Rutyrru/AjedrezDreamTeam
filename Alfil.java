@@ -33,43 +33,41 @@ public class Alfil {
         }
 
 
-        Alfi(pie, alfil, pos, tablero);
+        Alfi(pie, pos);
     }
 
-    public static void Alfi(String pie, String alfil, String pos, String[][] tablero) {
+    public static void Alfi(String pie, String pos) {
 
         if (alfil.equals(pie)) {
             System.out.print("Elige una posición:");
             pos = sh.nextLine();
-            for (int c = 0; c < tablero.length; c++) {
-                for (int d = 0; d < tablero[c].length; d++) {
-                    if (pos.equals(tablero[c][d])) {
+            for (int i = 0; i < tablero.length; i++) {
+                for (int j = 0; j < tablero[i].length; j++) {
+                    if (pos.equals(tablero[i][j])) {
                         System.out.print("El alfil se encuentra en la posición " + pos +
                                 " y puede estar en las posiciones :");
-                        int u=c;
-                        int v=d;
-                        int w=c;
-                        int x=d;
-                        int y=c;
-                        int z=d;
+                        int u=i;
+                        int v=j;
 
-                        while(u!=7){
+                        while(u!=7 && v!=7){
                             u++;
-                            System.out.print(tablero[u][u]+" ");
+                            v++;
+                            System.out.print(tablero[u][v]+" ");
                         }
-                        while(v!=0){
+                        while(u!=0 && v!=0){
+                            u--;
                             v--;
-                            System.out.print(tablero[v][v]+" ");
+                            System.out.print(tablero[u][v]+" ");
                         }
-                        while(w!=7 && x!=0){
-                            w++;
-                            x--;
-                            System.out.print(tablero[w][x]+" ");
+                        while(u!=7 && v!=0){
+                            u++;
+                            v--;
+                            System.out.print(tablero[u][v]+" ");
                         }
-                        while(y!=0 && z!=7){
-                            y--;
-                            z++;
-                            System.out.print(tablero[y][z]+" ");
+                        while(u!=0 && v!=7){
+                            u--;
+                            v++;
+                            System.out.print(tablero[u][v]+" ");
                         }
 
                     }
