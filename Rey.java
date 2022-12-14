@@ -47,15 +47,46 @@ public class Rey {
                     if (pos.equals(tablero[i][j])) {
                         System.out.print("El alfil se encuentra en la posición " + pos +
                                 " y puede estar en las posiciones :");
-                        System.out.print(tablero[i+1][j]+" ");
-                        System.out.print(tablero[i][j+1]+" ");
-                        System.out.print(tablero[i+1][j+1]+" ");
-                        System.out.print(tablero[i-1][j-1]+" ");
-                        System.out.print(tablero[i-1][j]+" ");
-                        System.out.print(tablero[i][j-1]+" ");
-                        System.out.println();
-
-
+                        try {
+                            System.out.print(tablero[i + 1][j] + " ");
+                        }catch (Exception e){
+                            System.out.print("");
+                        }
+                        try{
+                            System.out.print(tablero[i][j + 1] + " ");
+                        }catch (Exception e){
+                            System.out.print("");
+                        }
+                        try{
+                            System.out.print(tablero[i + 1][j + 1] + " ");
+                        }catch (Exception e){
+                            System.out.print("");
+                        }
+                        try {
+                            System.out.print(tablero[i - 1][j - 1] + " ");
+                        }catch (Exception e){
+                            System.out.print("");
+                        }
+                        try {
+                            System.out.print(tablero[i - 1][j] + " ");
+                        }catch (Exception e){
+                            System.out.print("");
+                        }
+                        try {
+                            System.out.print(tablero[i][j - 1] + " ");
+                        }catch (Exception e){
+                            System.out.print("");
+                        }
+                        try {
+                            System.out.print(tablero[i + 1][j - 1] + " ");
+                        }catch (Exception e){
+                            System.out.print("");
+                        }
+                        try {
+                            System.out.print(tablero[i - 1][j+1] + " ");
+                        }catch (Exception e) {
+                            System.out.print("");
+                        }
                     }
                 }
             }
