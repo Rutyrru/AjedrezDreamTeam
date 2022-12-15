@@ -44,31 +44,43 @@ public class Alfil {
             for (int i = 0; i < tablero.length; i++) {
                 for (int j = 0; j < tablero[i].length; j++) {
                     if (pos.equals(tablero[i][j])) {
+
                         System.out.print("El alfil se encuentra en la posición " + pos +
                                 " y puede estar en las posiciones :");
-                        int u=i;
-                        int v=j;
 
-                        while(u!=7 && v!=7){
+                        int w=i;
+                        int h=j;
+                        int x=i;
+                        int y=j;
+                        int z=i;
+                        int u=j;
+                        int v=i;
+                        int t=j;
+
+                        while(z!=7 && u!=7){
+                            z++;
                             u++;
-                            v++;
-                            System.out.print(tablero[u][v]+" ");
+                            System.out.print(tablero[z][u] + " ");
                         }
-                        while(u!=0 && v!=0){
-                            u--;
+
+                        while(v!=0 && t!=0){
                             v--;
-                            System.out.print(tablero[u][v]+" ");
+                            t--;
+                            System.out.print(tablero[v][t] + " ");
                         }
-                        while(u!=7 && v!=0){
-                            u++;
-                            v--;
-                            System.out.print(tablero[u][v]+" ");
+
+                        while(h!=7 && w!=0){
+                            h++;
+                            w--;
+                            System.out.print(tablero[w][h] + " ");
                         }
-                        while(u!=0 && v!=7){
-                            u--;
-                            v++;
-                            System.out.print(tablero[u][v]+" ");
+
+                        while(x!=7 && y!=0){
+                            x++;
+                            y--;
+                            System.out.print(tablero[x][y] + " ");
                         }
+
 
                     }
                 }
