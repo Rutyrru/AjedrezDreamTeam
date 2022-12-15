@@ -18,7 +18,6 @@ public class Final {
             {"a2", "b2", "c2", "d2", "e2", "f2", "g2", "h2"},
             {"a1", "b1", "c1", "d1", "e1", "f1", "g1", "h1"}
     };
-
     static void presentacion(){
         System.out.println("""
              ---------------------------------------
@@ -27,7 +26,7 @@ public class Final {
              --------------------------------------
              """);
     }
-    public static void getcolor(){
+    public static void getcolor() {
         System.out.println("""
                 ------------------------------------------
                 Seleccione la funcion que desea realizar:
@@ -37,26 +36,31 @@ public class Final {
                 3-Salir
                 ----------------------""");
         int color = sc.nextInt();
-        switch (color){
-            default:
-                System.out.println("""
-                             --------------------------
-                             ¡Escriba un numero valido!
-                             --------------------------""");
-                getcolor();
-                break;
-            case 1:
-                System.out.println("Ha elegido jugar con las piezas blancas.");
-                System.out.println();
-                break;
-            case 2:
-                System.out.println("Ha elegido jugar con las piezas negras.");
-                colorb=false;
-                break;
-            case 3:
-                System.out.println("Hasta la vista , muchas gracias.");
-                terminar=true;
-                break;
+        try {
+            switch (color) {
+                default:
+                    System.out.println("""
+                            --------------------------
+                            ¡Escriba un numero valido!
+                            --------------------------""");
+                    getcolor();
+                    break;
+                case 1:
+                    System.out.println("Ha elegido jugar con las piezas blancas.");
+                    System.out.println();
+                    break;
+                case 2:
+                    System.out.println("Ha elegido jugar con las piezas negras.");
+                    colorb = false;
+                    break;
+                case 3:
+                    System.out.println("Hasta la vista , muchas gracias.");
+                    terminar = true;
+                    break;
+            }
+        }catch (Exception e){
+            System.out.println("No puede introducir letras, por favor escriba un valor del 1 al 3.");
+            getPosicion();
         }
     }
     public static void getPosicion() {
@@ -69,6 +73,10 @@ public class Final {
         }
         System.out.println();
         posicion = ss.nextLine();
+       while(!posicion.matches("a1|a2|a3|a4|a5|a6|a7|a8|b1|b2|b3|b4|b5|b6|b7|b8|c1|c2|c3|c4|c5|c6|c7|c8|d1|d2|d3|d4|d5|d6|d7|8|e1|e2|e3|e4|e5|e6|e7|e8|f1|f2|f3|f4|f5|f6|f7|f8|g1|g2|g3|g4|g5|g6|g7|g8|h1|h2|h3|h4|h5|h6|h7|h8")){
+            System.out.println("Por favor escriba una posicion valida");
+            posicion = sc.next();
+        }
         for ( int i = 0; i < tablero.length; i++) {
             for ( int j = 0; j < tablero[i].length; j++) {
                 if (posicion.equals(tablero[i][j])) {
@@ -77,28 +85,43 @@ public class Final {
                 }
             }
         }
-    }
-    public static void getpieza(){
-        System.out.println("""
-                Elija la pieza que desea utilizar:
-                 -------------
-                |  p=Peon     |
-                |  t=Torre    |
-                |  c=Caballo  |
-                |  a=Alfil    |
-                |  r=Rey      |
-                |  d=Dama     |
-                 -------------""");
-        pieza =sc.next();
-        switch (pieza) {
-            case "p" -> Peon();
-            case "t" -> Torre();
-            case "c" -> Caballo();
-            case "a" -> Alfil();
-            case "r" -> Rey();
-            case "d" -> Dama();
         }
-    }
+    public static void getpieza(){
+            System.out.println("Elija la pieza que desea utilizar:\n" +
+                    " -------------\n" +
+                    "|  p=Peon     |\n" +
+                    "|  t=Torre    |\n" +
+                    "|  c=Caballo  |\n" +
+                    "|  a=Alfil    |\n" +
+                    "|  r=Rey      |\n" +
+                    "|  d=Dama     |\n" +
+                    " -------------");
+            pieza =sc.next();
+            switch (pieza){
+                default:
+                    System.out.println("Por favor, seleccione un valor correcto.");
+                    getpieza();
+                    break;
+                case "p":
+                case "P":
+                    Peon();break;
+                case"t":
+                case"T":
+                    Torre();break;
+                case"c":
+                case"C":
+                    Caballo();break;
+                case"a":
+                case"A":
+                    Alfil();break;
+                case"r":
+                case"R":
+                    Rey();break;
+                case"d":
+                case"D":
+                    Dama();break;
+            }
+        }
     public static void Peon() {
         if(colorb){
             for (int i = 0; i < tablero.length; i++) {
