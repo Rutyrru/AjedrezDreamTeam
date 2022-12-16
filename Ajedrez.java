@@ -27,9 +27,8 @@ public class Ajedrez {
              """);
     }
     public static void getcolor() {
-
-            String color;
-            System.out.println("""
+        String color;
+        System.out.println("""
                     ------------------------------------------
                     Seleccione la funcion que desea realizar:
                     ------------------------------------------
@@ -37,44 +36,42 @@ public class Ajedrez {
                     2-Juega Pieza Negra
                     3-Salir
                     ----------------------""");
-            color = sc.nextLine();
-            switch (color) {
-                default -> {
-                    System.out.println("""
+        color = sc.nextLine();
+        switch (color) {
+            default -> {
+                System.out.println("""
                             --------------------------
                             ¡Valor invalido! Por favor, escriba un numero del 1 al 3.
                             --------------------------""");
-                    getcolor();
-                }
-                case "1" -> {
-                    System.out.println("Ha elegido jugar con las piezas blancas.");
-                    System.out.println();
-                }
-                case "2" -> {
-                    System.out.println("Ha elegido jugar con las piezas negras.");
-                    System.out.println();
-                    colorb = false;
-                }
-                case "3" -> {
-                    System.out.println("Hasta la vista , muchas gracias.");
-                    terminar = true;
-                }
+                getcolor();
             }
+            case "1" -> {
+                System.out.println("Ha elegido jugar con las piezas blancas.");
+                System.out.println();
+            }
+            case "2" -> {
+                System.out.println("Ha elegido jugar con las piezas negras.");
+                System.out.println();
+                colorb = false;
+            }
+            case "3" -> {
+                System.out.println("Hasta la vista , muchas gracias.");
+                terminar = true;
+            }
+        }
     }
     public static void getPosicion() {
+        posicion="";
         System.out.println("Lo segundo será introducir su posición en el tablero:");
-        for (String[] strings : tablero) {
+        for (int i = 0; i < tablero.length; i++) {
             System.out.println();
             for (int j = 0; j < tablero.length; j++) {
-                System.out.print(strings[j] + " ");
-
-    
+                System.out.print(tablero[i][j] + " ");
             }
         }
         System.out.println();
         posicion = ss.nextLine();
-       while(!posicion.matches("a1|a2|a3|a4|a5|a6|a7|a8|b1|b2|b3|b4|b5|b6|b7|b8|c1|c2|c3|c4|c5|c6|c7|c8|d1|d2|d3|d4|d5|d6|d7|8|e1|e2|e3|e4|e5|e6|e7|e8|f1|f2|f3|f4|f5|f6|f7|f8|g1|g2|g3|g4|g5|g6|g7|g8|h1|h2|h3|h4|h5|h6|h7|h8")){
-
+        while(!posicion.matches("a1|a2|a3|a4|a5|a6|a7|a8|b1|b2|b3|b4|b5|b6|b7|b8|c1|c2|c3|c4|c5|c6|c7|c8|d1|d2|d3|d4|d5|d6|d7|d8|e1|e2|e3|e4|e5|e6|e7|e8|f1|f2|f3|f4|f5|f6|f7|f8|g1|g2|g3|g4|g5|g6|g7|g8|h1|h2|h3|h4|h5|h6|h7|h8")){
             System.out.println("Por favor escriba una posicion valida");
             posicion = sc.next();
         }
@@ -115,247 +112,41 @@ public class Ajedrez {
     }
     public static void Peon() {
         if(colorb){
-
- 
-                    if(posicion.matches("a1|b1|c1|d1|e1|f1|g1|h1")){
-                        System.out.println("El peon blanco no es capaz de posicionarse en la casilla seleccionada.");
-                    }
-                    else if (posicion.matches("a2|b2|c2|d2|e2|f2|g2|h2")) {
-
-                        System.out.println(tablero[letra - 1][numero]);
-                        System.out.println(tablero[letra - 2][numero]);
-                    } else {
-                        System.out.println("Ha seleccionado el peon,esta pieza es capaz de moverse una unica casilla en vertical, a no ser que se encuentre en la posicion \"x2\" o en la posicion \"x7\" siendo x cualquier letra." +
-                                "Dicho esto su Peon que se encuentra en "+posicion+" es capaz de moverse hasta las siguientes casillas:");
-                        System.out.println(tablero[letra - 1][numero]);
-            }
-        }else{
-                    if(posicion.matches("a8|b8|c8|d8|e8|f8|g8|h8")){
-                        System.out.println("El peon negro no es capaz de posicionarse en la casilla seleccionada.");
-                    }
-                    else if (posicion.matches("a7|b7|c7|d7|e7|f7|g7|h7")) {
-                        System.out.println(tablero[letra + 1][numero]);
-                        System.out.println(tablero[letra + 2][numero]);
-                    } else {
-                        System.out.println("Ha seleccionado el peon,esta pieza es capaz de moverse una unica casilla en vertical, a no ser que se encuentre en la posicion \"x2\" o en la posicion \"x7\" siendo x cualquier letra." +
-                                "Dicho esto su Peon que se encuentra en "+posicion+" es capaz de moverse hasta las siguientes casillas:");
-                        System.out.println(tablero[letra + 1][numero]);
-                    }
-                }
-    }
-    public static void Caballo(){
-        System.out.println("Ha seleccionado el caballo, esta pieza es capaz de moverse en forma de \"L\"\n" +
-                "Dicho esto, estas son las posiciones la cual su caballo, que se encuentra en "+posicion+" puede moverse:");
-        try {
-            System.out.print(tablero[letra+1][numero+2]+" ");
-
-        }catch (Exception e){
-            System.out.print("");
-        }
-        try {
-            System.out.print(tablero[letra-1][numero+2]+" ");
-
-        }catch (Exception e){
-            System.out.print("");
-        }
-        try {
-            System.out.print(tablero[letra+1][numero-2]+" ");
-
-        }catch (Exception e){
-            System.out.print("");
-        }
-        try {
-            System.out.print(tablero[letra-1][numero-2]+" ");
-
-        }catch (Exception e){
-            System.out.print("");
-        }
-        try {
-            System.out.print(tablero[letra+2][numero-1]+" ");
-
-        }catch (Exception e){
-            System.out.print("");
-        }
-        try {
-            System.out.print(tablero[letra-2][numero-1]+" ");
-
-
-        }catch (Exception e){
-            System.out.print("");
-        }
-        try {
-            System.out.print(tablero[letra+2][numero+1]+" ");
-        }catch (Exception e){
-            System.out.print("");
-        }
-        try {
-            System.out.print(tablero[letra-2][numero+1]);
-
-        }catch (Exception e){
-            System.out.print("");
-        }
-
-    }
-    public static void Alfil() {
-        System.out.println("Ha seleccionado el Alfil, esta ficha es capaz de moverse cualquier numero de posiciones, pero solo en diagonal." +
-                "Dicho esto, su Alfil que se encuentra en "+posicion+" es capaz de moverse hasta las siguientes posiciones:");
-        for (int i = 0; i < tablero.length; i++) {
-            for (int j = 0; j < tablero[i].length; j++) {
-                if (posicion.equals(tablero[i][j])) {
-                    int w=i;
-                    int h=j;
-                    int x=i;
-                    int y=j;
-                    int z=i;
-                    int u=j;
-                    int v=i;
-                    int t=j;
-
-                    while(z!=7 && u!=7){
-                        z++;
-                        u++;
-                        System.out.print(tablero[z][u] + " ");
-                    }
-
-                    while(v!=0 && t!=0){
-                        v--;
-                        t--;
-                        System.out.print(tablero[v][t] + " ");
-                    }
-
-                    while(h!=7 && w!=0){
-                        h++;
-                        w--;
-                        System.out.print(tablero[w][h] + " ");
-                    }
-
-                    while(x!=7 && y!=0){
-                        x++;
-                        y--;
-                        System.out.print(tablero[x][y] + " ");
-                    }
-                }
-            }
-        }
-    }
-    public static void Torre() {
-        System.out.println("Ha selecciona la Torre, esta pieza es capaz de moverse cualquier numero de casillas , pero con la limitacion de que solo puede hacerlo en horizontal y vertical." +
-                "Dicho esto, su Torre que se encuentra en "+posicion+" se puede mover hacia las casillas:");
-        for (int i = 1; i <= letra; i++) {
-            System.out.print(tablero[letra - i][numero] + " ");
-        }
-        for (int i = 1; i < tablero.length - letra; i++) {
-            System.out.print(tablero[letra + i][numero] + " ");
-        }
-        System.out.println();
-        for (int i = 1; i <= numero; i++) {
-            System.out.print(tablero[letra][numero - i] + " ");
-        }
-        for (int i = 1; i < tablero[letra].length - numero; i++) {
-            System.out.print(tablero[letra][numero + i] + " ");
-        }
-    }
-    public static void Rey() {
-        for (int i = 0; i < tablero.length; i++) {
-            for (int j = 0; j < tablero[i].length; j++) {
-                if (posicion.equals(tablero[i][j])) {
-                    System.out.print("Ha seleccionado la pieza del Rey, esta pieza es capaz de moverse una unica casilla en cualquier dirección.\n" +
-                            "Su Rey que se encuentra en la posición " + posicion +
-                            " puede moverse hacias las posiciones :");
-
-                    try {
-                        System.out.print(tablero[i + 1][j] + " ");
-                    }catch (Exception e){
-                        System.out.print("");
-                    }
-
-                    try{
-                        System.out.print(tablero[i + 1][j + 1] + " ");
-                    }catch (Exception e){
-                        System.out.print("");
-                    }
-
-                    try{
-                        System.out.print(tablero[i][j + 1] + " ");
-                    }catch (Exception e){
-                        System.out.print("");
-                    }
-
-                    try {
-                        System.out.print(tablero[i - 1][j+1] + " ");
-                    }catch (Exception e) {
-                        System.out.print("");
-                    }
-
-                    try {
-                        System.out.print(tablero[i - 1][j] + " ");
-                    }catch (Exception e){
-                        System.out.print("");
-                    }
-
-                    try {
-                        System.out.print(tablero[i - 1][j - 1] + " ");
-                    }catch (Exception e){
-                        System.out.print("");
-                    }
-
-                    try {
-                        System.out.print(tablero[i][j - 1] + " ");
-                    }catch (Exception e){
-                        System.out.print("");
-                    }
-
-                    try {
-                        System.out.print(tablero[i + 1][j - 1] + " ");
-                    }catch (Exception e){
-                        System.out.print("");
-                    }
-                }
-            }
-        }
-    }
-    public static void Dama() {
-        System.out.println("Ha seleccionado la Dama, esta pieza es capaz de moverse en cualquier posición las casillas que desee.\n" +
-                "Su dama que se encuentra en: " + posicion + " es capaz de moverse hasta: ");
-        for (int i = 1; i <= letra; i++) {
-            System.out.print(tablero[letra - i][numero] + " ");
-        }
-        for (int i = 1; i < tablero.length - letra; i++) {
-            System.out.print(tablero[letra + i][numero] + " ");
-        }
-        System.out.println();
-        for (int i = 1; i <= numero; i++) {
-            System.out.print(tablero[letra][numero - i] + " ");
-        }
-        for (int i = 1; i < tablero[letra].length - numero; i++) {
-            System.out.print(tablero[letra][numero + i] + " ");
-        }
-        for (int i = 0; i < tablero.length; i++) {
-            for (int j = 0; j < tablero[i].length; j++) {
-                if (posicion.equals(tablero[i][j])) {
-
-                        System.out.println("Ha seleccionado el Peon blanco, esta pieza en la posicion que ha seleccionado es capaz de avanzar dos casillas." +
-                                "Dicho esto, su Peon que se encuentra en "+posicion+" es capaz de moverse hasta las casillas: ");
-                        System.out.println(tablero[letra - 1][numero]);
-                        System.out.println(tablero[letra - 2][numero]);
-                        tablero[letra-1][numero]="X ";
-                        tablero[letra-2][numero]="X ";
-                    } else {
-                        System.out.println("Ha seleccionado el Peon blanco, esta pieza es capaz de avanzar una casilla." +
-                                "Dicho esto, su Peon que se encuentra en "+posicion+" es capaz de moverse hasta las casillas: ");
-                        System.out.println(tablero[letra-1][numero]);
-                       tablero[letra-1][numero]="X ";
-                    }
-
-        }else if(!colorb) {
-            if(posicion.matches("a1|b1|c1|d1|e1|f1|g1|h1")){
-                System.out.println("El peon negro no es capaz de posicionarse en la casilla seleccionada, ya que no podria continuar su camino." +
-                        "Vuelva a introducir su posicion.\n");
+            while (posicion.matches("a1|b1|c1|d1|e1|f1|g1|h1")) {
+                System.out.println("El peon blanco no es capaz de posicionarse en la casilla seleccionada.\n" +
+                        "Vuelve a escribir su posición.");
                 getPosicion();
             }
-            if (posicion.matches("a8|b8|c8|d8|e8|f8|g8|h8")) {
-                System.out.println("El peon negro no es capaz de posicionarse en la casilla seleccionada.");
-            } else if (posicion.matches("a7|b7|c7|d7|e7|f7|g7|h7")) {
+            if(posicion.matches("a8|b8|c8|d8|e8|f8|g8|h8")) {
+                System.out.println("El peon blanco en esta posicion se transformaria en otra pieza.");
+                System.exit(0);
+            }
+            if (posicion.matches("a2|b2|c2|d2|e2|f2|g2|h2")) {
+                System.out.println("Ha seleccionado el Peon blanco, esta pieza en la posicion que ha seleccionado es capaz de avanzar dos casillas." +
+                        "Dicho esto, su Peon que se encuentra en " + posicion + " es capaz de moverse hasta las casillas: ");
+                System.out.println(tablero[letra - 1][numero]);
+                System.out.println(tablero[letra - 2][numero]);
+                tablero[letra - 1][numero] = "X ";
+                tablero[letra - 2][numero] = "X ";
+            } else {
+                System.out.println("Ha seleccionado el Peon blanco, esta pieza es capaz de avanzar una casilla." +
+                        "Dicho esto, su Peon que se encuentra en " + posicion + " es capaz de moverse hasta las casillas: ");
+                System.out.println(tablero[letra - 1][numero]);
+                tablero[letra - 1][numero] = "X ";
+            }
+
+
+        }else{
+            while (posicion.matches("a8|b8|c8|d8|e8|f8|g8|h8")) {
+                System.out.println("El peon negro no es capaz de posicionarse en la casilla seleccionada.\n" +
+                        "Vuelve a escribir su posición.");
+                getPosicion();
+            }
+            if(posicion.matches("a1|b1|c1|d1|e1|f1|g1|h1")){
+                System.out.println("El peon negro en esta posicion se transformaria en otra pieza.");
+                System.exit(0);
+            }
+            if (posicion.matches("a7|b7|c7|d7|e7|f7|g7|h7")) {
                 System.out.println("Ha seleccionado el Peon negro, esta pieza en la posicion que ha seleccionado es capaz de avanzar dos casillas." +
                         "Dicho esto, su Peon que se encuentra en "+posicion+" es capaz de moverse hasta las casillas: ");
                 System.out.println(tablero[letra +1][numero]);
@@ -363,7 +154,7 @@ public class Ajedrez {
                 tablero[letra+ 1][numero] = "X ";
                 tablero[letra+ 2][numero] = "X ";
             } else {
-                System.out.println("Ha seleccionado el Peon blanco, esta pieza es capaz de avanzar una casilla." +
+                System.out.println("Ha seleccionado el Peon negro, esta pieza es capaz de avanzar una casilla." +
                         "Dicho esto, su Peon que se encuentra en "+posicion+" es capaz de moverse hasta las casillas: ");
                 System.out.println(tablero[letra+1 ][numero]);
                 tablero[letra+ 1][numero] = "X ";
@@ -432,7 +223,6 @@ public class Ajedrez {
                 if (posicion.equals(tablero[i][j])) {
                     System.out.print("El alfil se encuentra en la posición " + posicion +
                             " y puede estar en las posiciones :");
-
                     int w=i;
                     int h=j;
                     int x=i;
@@ -469,11 +259,6 @@ public class Ajedrez {
             }
         }
     }
-
-    
-    public static void main(String[] args) {
-
-
     public static void Torre() {
 
         for (int i = 1; i <= letra; i++) {
@@ -506,48 +291,56 @@ public class Ajedrez {
 
                     try {
                         System.out.print(tablero[i + 1][j] + " ");
+                        tablero[i+1][j] = "X ";
                     }catch (Exception e){
                         System.out.print("");
                     }
 
                     try{
                         System.out.print(tablero[i + 1][j + 1] + " ");
+                        tablero[i+1][j+1] = "X ";
                     }catch (Exception e){
                         System.out.print("");
                     }
 
                     try{
                         System.out.print(tablero[i][j + 1] + " ");
+                        tablero[i][j+1] = "X ";
                     }catch (Exception e){
                         System.out.print("");
                     }
 
                     try {
                         System.out.print(tablero[i - 1][j+1] + " ");
+                        tablero[i-1][j+1] = "X ";
                     }catch (Exception e) {
                         System.out.print("");
                     }
 
                     try {
                         System.out.print(tablero[i - 1][j] + " ");
+                        tablero[i-1][j] = "X ";
                     }catch (Exception e){
                         System.out.print("");
                     }
 
                     try {
                         System.out.print(tablero[i - 1][j - 1] + " ");
+                        tablero[i-1][j-1] = "X ";
                     }catch (Exception e){
                         System.out.print("");
                     }
 
                     try {
                         System.out.print(tablero[i][j - 1] + " ");
+                        tablero[i][j-1] = "X ";
                     }catch (Exception e){
                         System.out.print("");
                     }
 
                     try {
                         System.out.print(tablero[i + 1][j - 1] + " ");
+                        tablero[i+1][j-1] = "X ";
                     }catch (Exception e){
                         System.out.print("");
                     }
@@ -560,16 +353,20 @@ public class Ajedrez {
                 "Su dama que se encuentra en: " + posicion + " es capaz de moverse hasta: ");
         for (int i = 1; i <= letra; i++) {
             System.out.print(tablero[letra - i][numero] + " ");
+            tablero[letra - i][numero] = "X ";
         }
         for (int i = 1; i < tablero.length - letra; i++) {
             System.out.print(tablero[letra + i][numero] + " ");
+            tablero[letra + i][numero] = "X ";
         }
         System.out.println();
         for (int i = 1; i <= numero; i++) {
             System.out.print(tablero[letra][numero - i] + " ");
+            tablero[letra ][numero- i] = "X ";
         }
         for (int i = 1; i < tablero[letra].length - numero; i++) {
             System.out.print(tablero[letra][numero + i] + " ");
+            tablero[letra ][numero+ i] = "X ";
         }
         for (int i = 0; i < tablero.length; i++) {
             for (int j = 0; j < tablero[i].length; j++) {
@@ -587,12 +384,15 @@ public class Ajedrez {
                         z++;
                         u++;
                         System.out.print(tablero[z][u] + " ");
+                        tablero[z][u] = "X ";
                     }
 
                     while(v!=0 && t!=0){
                         v--;
                         t--;
                         System.out.print(tablero[v][t] + " ");
+                        tablero[v][t] = "X ";
+
                     }
                     System.out.println();
 
@@ -600,12 +400,14 @@ public class Ajedrez {
                         h++;
                         w--;
                         System.out.print(tablero[w][h] + " ");
+                        tablero[w][h] = "X ";
                     }
 
                     while(x!=7 && y!=0){
                         x++;
                         y--;
                         System.out.print(tablero[x][y] + " ");
+                        tablero[x][y] = "X ";
                     }
                 }
             }
@@ -614,10 +416,10 @@ public class Ajedrez {
     public static void Dibujar(){
         System.out.println("Aqui puede ver mas visualmente las posiciones a las cuales es capaz su pieza de moverse: ");
         tablero[letra][numero]="@ ";
-        for (int i = 0; i < tablero.length; i++) {
+        for (String[] strings : tablero) {
             System.out.println();
             for (int j = 0; j < tablero.length; j++) {
-                System.out.print(tablero[i][j] + " ");
+                System.out.print(strings[j] + " ");
             }
         }
     }
