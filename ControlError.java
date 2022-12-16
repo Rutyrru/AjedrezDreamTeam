@@ -132,7 +132,7 @@ public class ControlError {
         }
     }
     //El peón fue hecho por Ruben, Izan y Abel realizaron el control de errores para que los peones se movieran correctamente,
-    //Al principio Abel solo descubrió un error, pero con el tiempo se vieron cada vez más y Ruben estuvo el rato arreglándolo hasta acabarlo.
+    //Al principio Abel solo descubrió un error, pero con el tiempo se vieron cada vez más hasta que Izan vio una solución y Ruben pudo al fin acabarlo.
     public static void Peon() {
         System.out.println("Ha seleccionado el peon,esta pieza es capaz de moverse una única casilla en horizontal, a no ser que se encuentre en la posición \"x2\" o en la posición \"x7\" siendo x cualquier letra." +
                 "Dicho esto su Peon que se encuentra en "+posicion+" es capaz de moverse hasta las siguientes casillas:");
