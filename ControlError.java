@@ -344,7 +344,7 @@ public class ControlError {
             }
         }
     }
-    //Creado por Izan y Ruben, juntaron la torre y el alfil para su estructura
+    //Creado por Izan y Ruben, juntaron la torre y el alfil para su estructura.
     public static void Dama() {
         System.out.println("Ha seleccionado la Dama, esta pieza es capaz de moverse en cualquier posición las casillas que desee.\n" +
                 "Su dama que se encuentra en: " + posicion + " es capaz de moverse hasta: ");
