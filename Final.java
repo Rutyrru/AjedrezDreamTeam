@@ -123,6 +123,8 @@ public class Final {
             }
         }
     public static void Peon() {
+        System.out.println("Ha seleccionado el peon,esta pieza es capaz de moverse una unica casilla en horizontal, a no ser que se encuentre en la posicion \"x2\" o en la posicion \"x7\" siendo x cualquier letra." +
+                "Dicho esto su Peon que se encuentra en "+posicion+" es capaz de moverse hasta las siguientes casillas:");
         if(colorb){
             for (int i = 0; i < tablero.length; i++) {
                 for (int j = 0; j < tablero[i].length; j++) {
@@ -208,12 +210,11 @@ public class Final {
 
     }
     public static void Alfil() {
-
+        System.out.println("Ha seleccionado el Alfil, esta ficha es capaz de moverse cualquier numero de posiciones, pero solo en diagonal." +
+                "Dicho esto, su Alfil que se encuentra en "+posicion+" es capaz de moverse hasta las siguientes posiciones:");
         for (int i = 0; i < tablero.length; i++) {
             for (int j = 0; j < tablero[i].length; j++) {
                 if (posicion.equals(tablero[i][j])) {
-                    System.out.print("El alfil se encuentra en la posición " + posicion +
-                            " y puede estar en las posiciones :");
                     int w=i;
                     int h=j;
                     int x=i;
@@ -251,7 +252,8 @@ public class Final {
         }
     }
     public static void Torre() {
-
+        System.out.println("Ha selecciona la Torre, esta pieza es capaz de moverse cualquier numero de casillas , pero con la limitacion de que solo puede hacerlo en horizontal y vertical." +
+                "Dicho esto, su Torre que se encuentra en "+posicion+" se puede mover hacia las casillas:");
         for (int i = 1; i <= letra; i++) {
             System.out.print(tablero[letra - i][numero] + " ");
         }
@@ -271,7 +273,7 @@ public class Final {
         for (int i = 0; i < tablero.length; i++) {
             for (int j = 0; j < tablero[i].length; j++) {
                 if (posicion.equals(tablero[i][j])) {
-                    System.out.print("Ha seleccionado la pieza dl Rey, esta pieza es capaz de moverse una unica casilla en cualquier dirección.\n" +
+                    System.out.print("Ha seleccionado la pieza del Rey, esta pieza es capaz de moverse una unica casilla en cualquier dirección.\n" +
                             "Su Rey que se encuentra en la posición " + posicion +
                             "puede moverse hacias las posiciones :");
 
@@ -391,6 +393,7 @@ public class Final {
         }
     }
     public static void main(String[] args) {
+
         presentacion();
         getcolor();
         if(!terminar) {
