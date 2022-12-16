@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ControlError {
     //El código principal fue creado por Ruben
-    // Los métodos los creó también él.
+    // Los métodos presentación, getcolor y getposición los creó Ruben.
     //Izan y Ruben le dieron el aspecto del Inicio y de lo que pide la máquina al usuario.
     static boolean terminar=false;
     static int letra;
@@ -33,7 +33,7 @@ public class ControlError {
              """);
     }
     public static void getcolor() {
-        //El control de errores en get color, lo hicimos los tres, para que no saliera errores al poner letras.
+        //El control de errores en getcolor, lo hicimos los tres, para que no saliera errores al poner letras.
         try {
         System.out.println("""
                 ------------------------------------------
