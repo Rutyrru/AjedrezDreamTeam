@@ -20,6 +20,7 @@ public class Ajedrez {
             {"a2", "b2", "c2", "d2", "e2", "f2", "g2", "h2"},
             {"a1", "b1", "c1", "d1", "e1", "f1", "g1", "h1"}
     };
+    //Este segundo tablero lo hemos utilizado para reiniciar el primero y poder repetir el programa sin que de problemas a la hora de enseñarlo.
     static String[][] tablero2 = {
             {"a8", "b8", "c8", "d8", "e8", "f8", "g8", "h8"},
             {"a7", "b7", "c7", "d7", "e7", "f7", "g7", "h7"},
@@ -76,7 +77,7 @@ public class Ajedrez {
             }
         }
     }
-
+    //Una vez con el color seleccionado , pasamos a la posicion donde hemos limitado las cosas que puedes escribir, haciendo que solo puedas seleccionar una posicion valida en el tablero.
     public static void getPosicion() {
         posicion = "";
         System.out.println("Lo segundo será introducir su posición en el tablero:");
@@ -92,6 +93,7 @@ public class Ajedrez {
             System.out.println("Por favor escriba una posicion valida");
             posicion = sc.next();
         }
+        //Con el siguiente for, guardamos el valor del array en dos variables "letra y numero" las cuales nos serviran para hacer los calculos en los movimientos.
         for (int i = 0; i < tablero.length; i++) {
             for (int j = 0; j < tablero[i].length; j++) {
                 if (posicion.equals(tablero[i][j])) {
@@ -102,17 +104,17 @@ public class Ajedrez {
         }
 
     }
-
+    //Con el color y la posicion selecciona , es hora de seleccionar la pieza que queremos mover, hemos escrito el codigo para que acepte mayusculas y minusculas.
     public static void getpieza() {
         System.out.println("""
                 Elija la pieza que desea utilizar:
                  -------------
-                |  p=Peon     |
-                |  t=Torre    |
-                |  c=Caballo  |
-                |  a=Alfil    |
-                |  r=Rey      |
-                |  d=Dama     |
+                |  P=Peon     |
+                |  T=Torre    |
+                |  C=Caballo  |
+                |  A=Alfil    |
+                |  R=Rey      |
+                |  D=Dama     |
                  -------------""");
         pieza = sc.next();
         switch (pieza) {
@@ -128,7 +130,8 @@ public class Ajedrez {
             case "d", "D" -> Dama();
         }
     }
-
+    //Una vez realizadas las selecciones empezamos con la pieza que parecia mas basica el peon, al final acabo resultando que por su peculiaridad de si se encuentra en determinada
+    //fila se movia de manera distinta, o incluso habia limitar que cuando esstuviera en las primeras posiciones no se puediera y saltara un mensaje.
     public static void Peon() {
         if (colorb) {
             while (posicion.matches("a1|b1|c1|d1|e1|f1|g1|h1")) {
@@ -154,33 +157,37 @@ public class Ajedrez {
                 tablero[letra - 1][numero] = "X ";
             }
 
-
+        //Primero hicimos el color blanco y luego trasladamos las posiciones para hacer el negro.
         } else {
             while (posicion.matches("a8|b8|c8|d8|e8|f8|g8|h8")) {
                 System.out.println("El peon negro no es capaz de posicionarse en la casilla seleccionada.\n" +
                         "Vuelve a escribir su posición.");
                 getPosicion();
-            }
-            if (posicion.matches("a1|b1|c1|d1|e1|f1|g1|h1")) {
-                System.out.println("El peon negro en esta posicion se transformaria en otra pieza.");
-                System.exit(0);
-            }
-            if (posicion.matches("a7|b7|c7|d7|e7|f7|g7|h7")) {
-                System.out.println("Ha seleccionado el Peon negro, esta pieza en la posicion que ha seleccionado es capaz de avanzar dos casillas." +
+                if (posicion.matches("a1|b1|c1|d1|e1|f1|g1|h1")) {
+                    System.out.println("El peon negro en esta posicion se transformaria en otra pieza.");
+                    System.exit(0);
+                }
+                if (posicion.matches("a7|b7|c7|d7|e7|f7|g7|h7")) {
+                    System.out.println("Ha seleccionado el Peon negro, esta pieza en la posicion que ha seleccionado es capaz de avanzar dos casillas." +
+                            "Dicho esto, su Peon que se encuentra en " + posicion + " es capaz de moverse hasta las casillas: ");
+                    System.out.println(tablero[letra + 1][numero]);
+                    System.out.println(tablero[letra + 2][numero]);
+                    tablero[letra + 1][numero] = "X ";
+                    tablero[letra + 2][numero] = "X ";
+                }
+                else{
+                    System.out.println("Ha seleccionado el Peon negro, esta pieza es capaz de avanzar una casilla." +
                         "Dicho esto, su Peon que se encuentra en " + posicion + " es capaz de moverse hasta las casillas: ");
                 System.out.println(tablero[letra + 1][numero]);
-                System.out.println(tablero[letra + 2][numero]);
                 tablero[letra + 1][numero] = "X ";
-                tablero[letra + 2][numero] = "X ";
-            } else {
-                System.out.println("Ha seleccionado el Peon negro, esta pieza es capaz de avanzar una casilla." +
-                        "Dicho esto, su Peon que se encuentra en " + posicion + " es capaz de moverse hasta las casillas: ");
-                System.out.println(tablero[letra + 1][numero]);
-                tablero[letra + 1][numero] = "X ";
+            } 
+                
+                
             }
+                
         }
     }
-
+    //Para el cabalo utilizamos Try Catchs para cuando una pieza saliera del tablero, no saltara un error y pudiera continuar el programa.
     public static void Caballo() {
         System.out.println("Ha seleccionado el caballo, esta pieza es capaz de moverse en forma de \"L\"\n" +
                 "Dicho esto, estas son las posiciones la cual su caballo, que se encuentra en " + posicion + " puede moverse:");
@@ -236,7 +243,7 @@ public class Ajedrez {
         }
 
     }
-
+    //Para el alfil utilizamos "Contadores" Los cuales suben y bajan para hacer las diagonales.
     public static void Alfil() {
 
         for (int i = 0; i < tablero.length; i++) {
@@ -280,9 +287,10 @@ public class Ajedrez {
             }
         }
     }
-
+    //4 fors para realizar la torre.
     public static void Torre() {
-
+        System.out.println("Ha seleccionado la torre, esta pieza se mueve en horizontar y vertical todas las posiciones que le permita sin salir del tablero.\n" +
+                "Una vez dicho esto, su torre que se encuentra en "+ posicion+" puede moverse a las siguientes posiciones:");
         for (int i = 1; i <= letra; i++) {
             System.out.print(tablero[letra - i][numero] + " ");
             tablero[letra - i][numero] = "X ";
@@ -302,7 +310,7 @@ public class Ajedrez {
         }
         System.out.println();
     }
-
+    //Para el rey utilizamos un for y utilizamos los Try catch para que no saliera del tablero.
     public static void Rey() {
         for (int i = 0; i < tablero.length; i++) {
             for (int j = 0; j < tablero[i].length; j++) {
@@ -370,7 +378,7 @@ public class Ajedrez {
             }
         }
     }
-
+    //La Dama o Reina , es un conjunto de la torre y el alfil, por tanto traducimos su codigo a esta funcion para utilizarla.
     public static void Dama() {
         System.out.println("Ha seleccionado la Dama, esta pieza es capaz de moverse en cualquier posición las casillas que desee.\n" +
                 "Su dama que se encuentra en: " + posicion + " es capaz de moverse hasta: ");
@@ -436,7 +444,7 @@ public class Ajedrez {
             }
         }
     }
-
+    //La funcion dibujar la hemos creaod con la intencion de no dar las posiciones solo, si no que el usuario sea capaz de ver su pieza en el tablero y donde será capaz de moverse.
     public static void Dibujar() {
         System.out.println("Aqui puede ver mas visualmente las posiciones a las cuales es capaz su pieza de moverse: ");
         tablero[letra][numero] = "@ ";
@@ -447,7 +455,7 @@ public class Ajedrez {
             }
         }
     }
-
+    //La funcion repetir le pedirá al usuario si quiere volver a reiniciar el programa y en caso de decir sí, reiniciara las variables y formara el tablero de nuevo.
     public static boolean repetir() {
         boolean repetir = false;
         System.out.println("¿Desea reiniciar el programa?-----> Si/No");
@@ -476,7 +484,7 @@ public class Ajedrez {
         }
         return repetir;
     }
-
+    //En el main como hemos dicho anteriormente solo tenemos las funciones y un booleano para poder repetir el programa, no queriamos sobrecargar el main.
     public static void main(String[] args) {
         boolean repetir;
         do {
