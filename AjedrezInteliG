@@ -257,6 +257,8 @@ public class Ajedrez {
                 if (posicion.equals(tablero[i][j])) {
                     System.out.print("El alfil se encuentra en la posición " + posicion +
                             " y puede estar en las posiciones :");
+                 
+                    
                     int w = i;
                     int h = j;
                     int x = i;
@@ -467,7 +469,6 @@ public class Ajedrez {
     }
     //La funcion repetir le pedirá al usuario si quiere volver a reiniciar el programa y en caso de decir sí, reiniciara las variables y formara el tablero de nuevo.
     public static boolean repetir() {
-        boolean repetir = false;
         System.out.println("¿Desea reiniciar el programa?-----> Si/No");
         String respuesta = sc.next();
         while (!respuesta.matches("Si|si|SI|s|S|Y|y|Sí|sí|No|no|N|n|NO")){
@@ -476,9 +477,7 @@ public class Ajedrez {
         }
         if (respuesta.matches("Si|si|SI|s|S|Y|y|Sí|sí")) {
             for (int i = 0; i < tablero.length; i++) {
-                for (int j = 0; j < tablero.length; j++) {
-                    tablero[i][j]=tablero2[i][j];
-                }
+                System.arraycopy(tablero2[i], 0, tablero[i], 0, tablero.length);
             }
 
             letra=0;
@@ -486,13 +485,13 @@ public class Ajedrez {
             posicion="";
             colorb=true;
             System.out.println("Reiniciando...");
-            return repetir=true;
+            return true;
         }else if (respuesta.matches("No|no|N|n|NO")) {
             System.out.println("Muchas gracias por utilizar nuestro programa.");
             System.exit(0);
-            return repetir = false;
+            return false;
         }
-        return repetir;
+        return false;
     }
     //En el main como hemos dicho anteriormente solo tenemos las funciones y un booleano para poder repetir el programa, no queriamos sobrecargar el main.
     public static void main(String[] args) {
@@ -506,7 +505,7 @@ public class Ajedrez {
                 Dibujar();
             }
             repetir=repetir();
-        } while (repetir == true);
+        } while (repetir);
 
 
     }
