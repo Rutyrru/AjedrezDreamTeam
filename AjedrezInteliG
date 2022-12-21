@@ -258,7 +258,6 @@ public class Ajedrez {
                     System.out.print("El alfil se encuentra en la posición " + posicion +
                             " y puede estar en las posiciones :");
 
-
                     int w = i;
                     int h = j;
                     int x = i;
@@ -507,7 +506,6 @@ public class Ajedrez {
             }
             repetir=repetir();
         } while (repetir);
-
 
     }
 }
