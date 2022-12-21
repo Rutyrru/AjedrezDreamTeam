@@ -196,7 +196,7 @@ public class Ajedrez {
     //Para el cabalo utilizamos Try Catchs para cuando una pieza saliera del tablero, no saltara un error y pudiera continuar el programa.
     public static void Caballo() {
         System.out.println("Ha seleccionado el caballo, esta pieza es capaz de moverse en forma de \"L\"\n" +
-                "Dicho esto, estas son las posiciones la cual su caballo, que se encuentra en " + posicion + " puede moverse:");
+                "Dicho esto, estas son las posiciones la cual su caballo, que se encuentra en " + posicion + " puede moverse: ");
         try {
             System.out.print(tablero[letra + 1][numero + 2] + " ");
             tablero[letra + 1][numero + 2] =rojo+"X "+reset;
@@ -257,8 +257,8 @@ public class Ajedrez {
                 if (posicion.equals(tablero[i][j])) {
                     System.out.print("El alfil se encuentra en la posición " + posicion +
                             " y puede estar en las posiciones :");
-                 
-                    
+
+
                     int w = i;
                     int h = j;
                     int x = i;
@@ -458,6 +458,7 @@ public class Ajedrez {
     }
     //La funcion dibujar la hemos creaod con la intencion de no dar las posiciones solo, si no que el usuario sea capaz de ver su pieza en el tablero y donde será capaz de moverse.
     public static void Dibujar() {
+        System.out.println("");
         System.out.println("Aqui puede ver mas visualmente las posiciones a las cuales es capaz su pieza de moverse: ");
         tablero[letra][numero] = verde+"@ "+reset;
         for (String[] strings : tablero) {
